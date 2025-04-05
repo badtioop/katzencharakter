@@ -1,1 +1,131 @@
-<!DOCTYPE html><html lang='de'><head><meta charset='UTF-8'><title>quiz.html</title></head><body><p>quiz.html</p></body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katzencharakter-Quiz</title>
+  <style>
+    :root {
+      --gold: #c9b27e;
+      --beige: #fefbf8;
+      --rose: #f5ebe0;
+      --braun: #5e4634;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(var(--beige), var(--rose));
+      padding: 2rem;
+      color: var(--braun);
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .frage {
+      margin-bottom: 2rem;
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      background-color: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #bba465;
+    }
+    .resultat {
+      text-align: center;
+      font-size: 1.3rem;
+      background: #ffffffcc;
+      margin-top: 3rem;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    a {
+      display: inline-block;
+      margin-top: 1rem;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      background: var(--gold);
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+    }
+    a:hover {
+      background: #bba465;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐾 Katzencharakter-Quiz 🐾</h1>
+  <div id="quiz"></div>
+  <div class="resultat hidden" id="resultat"></div>
+
+  <script>
+    const fragen = [
+      ["Wie verhält sich deine Katze bei Besuch?", [["Versteckt sich", "ruhig"], ["Kommt neugierig", "neugierig"], ["Läuft stolz hinein", "mutig"]]],
+      ["Wie zeigt sie Zuneigung?", [["Schmust oft", "anhänglich"], ["Bleibt eher für sich", "stolz"], ["Läuft dir nach", "anhänglich"]]],
+      ["Wie verhält sie sich beim Spielen?", [["Rast herum", "verspielt"], ["Beobachtet ruhig", "weise"], ["Greift mutig an", "mutig"]]],
+      ["Wie ist sie im Alltag?", [["Verspielt & neugierig", "verspielt"], ["Schläft viel", "ruhig"], ["Fokussiert & klug", "weise"]]]
+    ];
+    const steine = {
+      "mutig": "tigerauge",
+      "ruhig": "amethyst",
+      "neugierig": "lapislazuli",
+      "verspielt": "aventurin",
+      "anhänglich": "rosenquarz",
+      "stolz": "obsidian",
+      "weise": "bergkristall"
+    };
+    const quizEl = document.getElementById("quiz");
+    const resultEl = document.getElementById("resultat");
+    let punkte = {}, frageIndex = 0;
+
+    function renderFrage() {
+      if (frageIndex >= fragen.length) return zeigeErgebnis();
+      quizEl.innerHTML = "";
+      const frage = fragen[frageIndex];
+      const div = document.createElement("div");
+      div.className = "frage";
+      div.innerHTML = `<h2>${frage[0]}</h2>`;
+      frage[1].forEach(([text, typ]) => {
+        const btn = document.createElement("button");
+        btn.textContent = text;
+        btn.onclick = () => {
+          punkte[typ] = (punkte[typ] || 0) + 1;
+          frageIndex++;
+          renderFrage();
+        };
+        div.appendChild(btn);
+      });
+      quizEl.appendChild(div);
+    }
+
+    function zeigeErgebnis() {
+      quizEl.innerHTML = "";
+      let dominant = Object.entries(punkte).sort((a,b)=>b[1]-a[1])[0][0];
+      const stein = steine[dominant];
+      resultEl.classList.remove("hidden");
+      resultEl.innerHTML = `Deine Katze ist <strong>${dominant}</strong>.<br><br>
+        Passender Heilstein: <strong>${stein}</strong><br><br>
+        <a href="${stein}.html">Heilstein ansehen</a><br><br>
+        <a href="shop.html">Jetzt Halsband kaufen</a>`;
+    }
+
+    renderFrage();
+  </script>
+</body>
+</html>

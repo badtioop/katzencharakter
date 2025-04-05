@@ -1,1 +1,115 @@
-<!DOCTYPE html><html lang='de'><head><meta charset='UTF-8'><title>index.html</title></head><body><p>index.html</p></body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katzencharakter – Heilstein Halsbänder</title>
+  <style>
+    :root {
+      --gold: #c9b27e;
+      --rose: #f5ebe0;
+      --braun: #5e4634;
+      --beige: #fefbf8;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(var(--beige), var(--rose));
+      margin: 0;
+      color: var(--braun);
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.2s ease-out forwards;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #ffffffa0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.2s ease-out 0.5s forwards;
+    }
+    .hero img {
+      max-width: 350px;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      transition: transform 0.4s ease;
+    }
+    .hero img:hover {
+      transform: scale(1.03);
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+    .button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: var(--gold);
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background-color: #bba465;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem;
+      color: #999;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 Heilstein Halsbänder für Katzen</h1>
+    <p>Natürlich. Energetisch. Stilvoll. – Finde das passende Heilstein-Halsband für deine Katze und entdecke ihre inneren Kräfte.</p>
+  </header>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=800&q=80" alt="Katzenhalsband mit Heilstein">
+    <h2>Mehr als nur ein Accessoire</h2>
+    <p>
+      Unsere Halsbänder vereinen stilvolles Design mit der Kraft echter Heilsteine. Jeder Stein ist sorgfältig ausgewählt, um bestimmte Charakterzüge deiner Katze zu fördern – ob Mut, Ruhe, Verspieltheit oder Weisheit.
+      <br><br>
+      Die Steine sind direkt ins Halsband eingearbeitet und fördern das Wohlbefinden deines Lieblings auf energetischer Ebene.
+    </p>
+    <a class="button" href="quiz.html">✨ Welcher Heilstein passt zu deiner Katze? ✨</a>
+  </section>
+  <footer>
+    &copy; 2025 Katzencharakter – Heilstein Halsbänder mit Liebe gefertigt
+  </footer>
+</body>
+</html>
